@@ -1,7 +1,7 @@
 class Solution {
     public boolean checkIfExist(int[] arr) {
         int n=arr.length;
-        Map<Integer, Integer> map=new HashMap();
+        HAshMap<Integer, Integer> map=new HashMap();
         
         for(int i=0; i<n; i++){
             if( map.containsKey(arr[i]*2)){
