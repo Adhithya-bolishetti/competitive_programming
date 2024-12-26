@@ -12,7 +12,6 @@ class Solution {
                 return 0;
             }
         }
-
         return (int)reverse;
     }
 }
