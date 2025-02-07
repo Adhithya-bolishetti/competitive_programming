@@ -26,32 +26,38 @@ class Sorting{
         merge(arr,low,mid,high);
     }
     public void merge(int[] arr, int low, int mid, int high){
-        int[] sarr=new int[high-low+1];
-        int ind=0;
-        int left=low;
-        int right=mid+1;
-        while(left<=mid && right<=high){
-            if(arr[left]<=arr[right]){
-                sarr[ind]=arr[left];
-                ind++;
-                left++;
+        int n1 = mid - low + 1;
+        int n2 = high - mid;
+        int[] left = new int[n1];
+        int[] right = new int[n2];
+        for (int i = 0; i < n1; i++) {
+            left[i] = arr[low + i];
+        }
+        for (int i = 0; i < n2; i++) {
+            right[i] = arr[mid + 1 + i];
+        }
+       int i = 0, j = 0, k = low;
+        while (i < n1 && j < n2) {
+            if (left[i] <= right[j]) {
+                arr[k] = left[i];
+                i++;
+            } else {
+                arr[k] = right[j];
+                j++;
             }
-            else{
-                sarr[ind]=arr[right];
-                ind++;
-                right++;
-            }
+            k++;
         }
-        while(left<=mid){
-            sarr[ind]=arr[left];
-            ind++;
-            left++;
+
+        while (i < n1) {
+            arr[k] = left[i];
+            i++;
+            k++;
         }
-        while(right<=high){
-            sarr[ind]=arr[right];
-            ind++;
-            right++;
+
+        while (j < n2) {
+            arr[k] = right[j];
+            j++;
+            k++;
         }
-        System.arraycopy(sarr, 0, arr, low, sarr.length);
     }
 }
