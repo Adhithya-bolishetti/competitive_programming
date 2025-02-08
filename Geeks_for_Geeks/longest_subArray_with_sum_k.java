@@ -1,7 +1,7 @@
 class Solution {
     public int longestSubarray(int[] arr, int k) {
         // code here
-        HashMap<Integer , Integer> map = new HashMap<>();
+        Map<Integer , Integer> map = new HashMap<>();
         
         int sum = 0;
         int max = 0;
