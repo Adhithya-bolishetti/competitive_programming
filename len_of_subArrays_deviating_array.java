@@ -5,7 +5,7 @@ public class Main
 		int[] a={1,2,3,5,4,6,9,8,7,10};
 		int n=a.length-1;
 		int s=0,e=s+1;
-		while(s<n){
+		while(s<n-1){
 		    for(int i=s;i<n;i++){
 		        if(a[i]>a[i+1]){
 		            s=i;
