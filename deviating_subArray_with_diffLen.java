@@ -1,5 +1,5 @@
 import java.util.*;
-public class Main
+public class deviating_subArray_with_diffLen
 {
 	public static void main(String[] args) {
 		int[] a={1,2,3,5,4,6,9,8,7,10,11,14,13,12,15,16};
