@@ -3,6 +3,7 @@ import java.util.*;
 class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Enter values : ");
         String input = sc.nextLine();
         String[] strarr = input.split("\\s+");
         int[] arr = new int[strarr.length];
