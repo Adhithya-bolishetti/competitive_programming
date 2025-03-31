@@ -10,43 +10,41 @@
  */
 class Solution {
     // This is a recursive solution to reverse the linked list.
-    public ListNode reverseList(ListNode head) {
-       if(head == null || head.next == null) {
+    public ListNode reverseLinkedList(ListNode head) {
+        // Check if the list is empty or has only one node
+        if (head == null || head.next == null) {
             return head;
         }
-        ListNode newHead = reverseList(head.next);
+        // Recursive step: Reverse the remaining
+        ListNode newHead = reverseLinkedList(head.next);
         ListNode front = head.next;
         front.next = head;
         head.next = null;
         return newHead;
     }
+    
     public boolean isPalindrome(ListNode head) {
-        //if the list is empty or has only one element, it is a palindrome.
-        if(head == null || head.next == null) return true;
+        if (head == null || head.next == null) {
+            return true;
+        }
         ListNode slow = head;
-        ListNode fast = head.next;
-        //Using the fast and slow pointer technique to find the middle of the linked list.
-        while(fast!=null && fast.next!=null) {
+        ListNode fast = head;
+        while (fast.next != null && fast.next.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
-        //method to reverse the second half of the linked list.
-        ListNode newHead = reverseList(slow.next);
+        ListNode newHead = reverseLinkedList(slow.next);
         ListNode first = head;
         ListNode second = newHead;
-        //Comparing the first half and the second half of the linked list.
-        while(second!=null) {
-            //If the values of the first half and the second half are not equal, it is not a palindrome.
-            if(first.val != second.val) {
-                //If the values are not equal, we reverse the second half back to its original order.
-                //This is done to maintain the original structure of the linked list.
-                reverseList(newHead);
+        while (second != null) {
+            if (first.val != second.val) {
+                reverseLinkedList(newHead);
                 return false;
-            } 
+            }
             first = first.next;
             second = second.next;
         }
-        reverseList(newHead);
+        reverseLinkedList(newHead);
         return true;
     }
 }
