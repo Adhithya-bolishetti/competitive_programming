@@ -15,7 +15,7 @@ public class Solution {
        HashMap <ListNode, Integer> hm = new HashMap<>();
        ListNode temp = head;
          //traverse the linked list and check if the node is already present in the map
-       while(temp!=null) {
+        while(temp!=null) {
         //if the node is already present in the map, it means we have a cycle
         //and we return the node
         if(hm.containsKey(temp)) return temp;
