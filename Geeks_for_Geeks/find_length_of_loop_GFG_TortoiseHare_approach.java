@@ -1,12 +1,3 @@
-class Node
-{
-    int data;
-    Node next;
-    Node(int d) {data = d; next = null; }
-}
-
-*/
-
 // Function should return the length of the loop in LL.
 
 class Solution {
