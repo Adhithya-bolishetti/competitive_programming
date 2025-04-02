@@ -13,7 +13,6 @@ class Solution {
         //If list is empty return null
         if(head == null) return null;
         ListNode temp = head;
-        ListNode newHead = null;
         ListNode prev = null;
         
         //Iterate through the list and reverse the links
@@ -25,12 +24,10 @@ class Solution {
             temp.next = prev;
             //Move the previous node to the current node
             prev = temp;
-            //head of the new list is the last node we processed
-            newHead = temp;
             //Move the current node to the next node
             temp = front;
         }
-        return newHead;
+        return prev;   //Return the head of the new list which is the last node we processed
 
     }
 }
