@@ -14,7 +14,8 @@ public class Decimal_to_Binary
         return new String(charArray);
     }
 	public static void main(String[] args) {
-		int n = 10;
+		Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
 		String res = "";
 		while(n != 0) {
 		    if(n%2==1) res+="1";
