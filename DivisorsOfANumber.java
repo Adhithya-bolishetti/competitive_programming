@@ -8,7 +8,6 @@ public class DivisorsOfANumber {
 
 	// Function to print all divisors of a given number n
 	// using the method of trial division
-{
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
