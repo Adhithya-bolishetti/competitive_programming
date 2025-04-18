@@ -5,12 +5,10 @@ class Solution {
             ans[i] = -1;
         }
         for(int i=0;i<nums1.length;i++) {
-            int max = Integer.MIN_VALUE;
             for(int j=nums2.length-1;j>=0;j--) {
                 if(nums2[j] == nums1[i]) break;
                 if(nums2[j] > nums1[i]) {
-                    max = nums2[j];
-                    ans[i] = max;
+                    ans[i] = nums2[j];
                 }
             }
         }
