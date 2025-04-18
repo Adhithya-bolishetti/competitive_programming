@@ -16,7 +16,7 @@ public class PostfixToPrefix {
                 st.pop();
                 String t2 = st.peek();
                 st.pop();
-                st.push(String.valueOf(c)+t2+t1);
+                st.push(c+t2+t1);
             }
             i++;
         }
