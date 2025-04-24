@@ -19,7 +19,7 @@ class NextSmallestElement {
 		    nums2[i] = sc.nextInt();
 		}
 		Solution sol = new Solution();
-		int[] ans = sol.nextGreaterElement(nums1,nums2);
+		int[] ans = sol.nextSmallerElement(nums1,nums2);
 		System.out.println("result");
 		System.out.print("[");
 		for(int i=0;i<ans.length;i++) {
@@ -29,7 +29,7 @@ class NextSmallestElement {
 	}
 }
 class Solution {
-    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+    public int[] nextSmallerElement(int[] nums1, int[] nums2) {
         Stack<Integer> st = new Stack<>();
         HashMap<Integer,Integer> hm = new HashMap<>();
         for(int i=nums2.length-1;i>=0;i--) {
