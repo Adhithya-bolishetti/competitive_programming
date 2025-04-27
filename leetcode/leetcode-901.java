@@ -6,8 +6,8 @@ class StockSpanner {
     
     public int next(int price) {
         list.add(price);
-        int count = 0;
-        for(int i=list.size()-1;i>=0;i--) {
+        int count = 1;
+        for(int i=list.size()-2;i>=0;i--) {
             if(list.get(i) <= price) {
                 count++;
             }
