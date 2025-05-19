@@ -19,7 +19,7 @@ class itemComparator implements Comparator<Data> {
         else return 0;
     }
 }
-class Main {
+class NmeetingsinOneRoom {
 
     // Comparator to sort by end time
 
