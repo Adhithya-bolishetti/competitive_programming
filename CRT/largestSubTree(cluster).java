@@ -29,19 +29,15 @@ public class Solution {
         return totalSize;
     }
 
-    public static Node buildTreePostIn(String inorder, int is, int ie,
-                                       String postorder, int ps, int pe,
-                                       HashMap<Character, Integer> hm) {
+    public static Node buildTreePostIn(String inorder, int is, int ie,String postorder, int ps, int pe,HashMap<Character, Integer> hm) {
         if (is > ie || ps > pe) return null;
 
         Node root = new Node(postorder.charAt(pe));
         int inRoot = hm.get(postorder.charAt(pe));
         int numsLeft = inRoot - is;
 
-        root.left = buildTreePostIn(inorder, is, inRoot - 1,
-                                    postorder, ps, ps + numsLeft - 1, hm);
-        root.right = buildTreePostIn(inorder, inRoot + 1, ie,
-                                     postorder, ps + numsLeft, pe - 1, hm);
+        root.left = buildTreePostIn(inorder, is, inRoot - 1,postorder, ps, ps + numsLeft - 1, hm);
+        root.right = buildTreePostIn(inorder, inRoot + 1, ie,postorder, ps + numsLeft, pe - 1, hm);
         return root;
     }
 
@@ -51,8 +47,7 @@ public class Solution {
             hm.put(inorder.charAt(i), i);
         }
 
-        return buildTreePostIn(inorder, 0, inorder.length() - 1,
-                               postorder, 0, postorder.length() - 1, hm);
+        return buildTreePostIn(inorder, 0, inorder.length() - 1,postorder, 0, postorder.length() - 1, hm);
     }
 
     public static int largestSubTree(Node root) {
