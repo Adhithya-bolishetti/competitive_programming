@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-class TUF {
+class Main {
     // Function to find the maximum points for ninja training
     static int ninjaTraining(int n, int[][] points) {
         // Initialize an array 'prev' to store the maximum points for the previous day
