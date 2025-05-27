@@ -1,40 +1,55 @@
+
 import java.util.*;
-public class Main
-{
-    public static int findMerit(int[][] arr, int day, int last, int[][] dp) {
-        if(day == 0) {
-            int max = 0;
-            for(int i=0; i<arr[0].length; i++) {
-                if(i != last) {
-                    max = Math.max(max, arr[0][i]);
-                }
+
+class Main {
+    // Recursive function to calculate the maximum points for the ninja training
+    static int f(int day, int last, int[][] points, int[][] dp) {
+        // If the result is already calculated, return it
+        if (dp[day][last] != -1) return dp[day][last];
+
+        // Base case: When it's the first day (day == 0)
+        if (day == 0) {
+            int maxi = 0;
+            for (int i = 0; i <= 2; i++) {
+                if (i != last)
+                    maxi = Math.max(maxi, points[0][i]);
             }
-            return max;
+            return dp[day][last] = maxi; // Store and return the result
         }
-        if(dp[day][last] != -1) return dp[day][last];
-        int max = 0;
-        for(int i=0; i<arr[0].length; i++) {
-            if(i != last) {
-                int points = arr[day][i] + findMerit(arr, day-1, i, dp);
-                max = Math.max(max, points);
+
+        int maxi = 0;
+        // Loop through the three activities on the current day
+        for (int i = 0; i <= 2; i++) {
+            if (i != last) {
+                // Calculate the points for the current activity and recursively
+                // calculate the maximum points for the previous day
+                int activity = points[day][i] + f(day - 1, i, points, dp);
+                maxi = Math.max(maxi, activity); // Update the maximum points
             }
-            dp[day][last] = max;
         }
-        return max;
+
+        return dp[day][last] = maxi; // Store and return the result
     }
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int[][] arr = {{1,2,3},
-		               {2,3,4},
-		               {3,4,5},
-		               {4,5,6}};
-		int[][] dp = new int[arr.length][arr[0].length+1];
-		for(int[] row : dp) {
-		    Arrays.fill(row,-1);
-		}
-		int ans = findMerit(arr, arr.length-1, arr[0].length, dp);
-		System.out.print(ans);
-	}
+
+    // Function to find the maximum points for ninja training
+    static int ninjaTraining(int n, int[][] points) {
+        // Initialize a memoization table with -1 values
+        int dp[][] = new int[n][4];
+        for (int[] row : dp)
+            Arrays.fill(row, -1);
+
+        // Start the recursive calculation from the last day (n - 1) with the last activity (3)
+        return f(n - 1, 3, points, dp);
+    }
+
+    public static void main(String args[]) {
+        // Define the points for each activity on each day
+        int[][] points = {{10, 40, 70},
+                          {20, 50, 80},
+                          {30, 60, 90}};
+
+        int n = points.length; // Get the number of days
+        System.out.println(ninjaTraining(n, points)); // Calculate and print the maximum points
+    }
 }
-// Time complexity : O(n)
-// Space complexity : O(n)
+
