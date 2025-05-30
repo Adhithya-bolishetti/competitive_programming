@@ -48,7 +48,7 @@ public class Main {
                 // Check for next arriving process
                 for (int i = 0; i < n; i++) {
                     Process p = processList.get(i);
-                    if (!isInQueue[i] && p.arrivalTime <= currentTime && p.remainingTime > 0) {
+                    if (!isInQueue[i] &&  p.remainingTime > 0) {
                         queue.add(p);
                         isInQueue[i] = true;
                     }
