@@ -3,8 +3,10 @@ import java.io.*;
 
 public class Solution {
     public static int countWays(int[] num, int index, int tar) {
-        if (tar == 0) return 1;
-        if (index == 0) return tar == num[0] ? 1 : 0;
+         if (index == 0) {
+            if (tar == 0 && num[0] == 0) return 2;
+            return (tar == 0 || tar == num[0]) ? 1 : 0;
+        }
 
         int notPick = countWays(num, index - 1, tar);
 
