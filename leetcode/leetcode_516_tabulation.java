@@ -17,22 +17,7 @@ class Solution {
                 }
             }
         }
-        
-        int length = 0;
-        int k1 = m;
-        int k2 = n;
-        while(k1 > 0 && k2 > 0) {
-            if(text1.charAt(k1-1) == text2.charAt(k2-1)) {
-                length++;
-                k1--;
-                k2--;
-            }
-            else {
-                if(dp[k1-1][k2] > dp[k1][k2-1]) k1--;
-                else k2--;
-            }
-        }
-        return length;
+        return dp[m][n];
     }
     public int longestPalindromeSubseq(String s) {
         String reversed = new StringBuilder(s).reverse().toString();
