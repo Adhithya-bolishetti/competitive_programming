@@ -8,7 +8,7 @@ class Solution {
             profit = Math.max(-prices[index] + findProfit(prices, index+1, 0, dp), findProfit(prices, index+1, 1, dp));
         }
         else {
-            profit = profit + Math.max(prices[index] + findProfit(prices, index+1, 1, dp), findProfit(prices, index+1, 0, dp));
+            profit = Math.max(prices[index] + findProfit(prices, index+1, 1, dp), findProfit(prices, index+1, 0, dp));
         }
 
         return dp[index][buy] = profit;
