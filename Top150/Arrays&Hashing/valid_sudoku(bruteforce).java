@@ -21,7 +21,7 @@ class Solution {
 
         int m = n / 3;
         for (int square = 0; square < n; square++) {
-            Set seen = new HashSet<>();
+            Set<Character> seen = new HashSet<>();
             for (int i = 0; i < m; i++) {
                 for (int j = 0; j < m; j++) {
                     int row = (square / m) * m + i;
