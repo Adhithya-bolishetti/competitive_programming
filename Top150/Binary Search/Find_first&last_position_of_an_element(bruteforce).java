@@ -1,0 +1,19 @@
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int start = -1;
+        int end = -1;
+
+        for(int i=0;i<nums.length;i++) {
+            if(nums[i] == target && start == -1) {
+                start = i;
+                end = i;
+            } else if(nums[i] == target && start != -1) {
+                end = i;
+            }
+        }
+
+        return new int[]{start, end};
+    }
+}
+//Time Complexity: O(n)
+//Space Complexity: O(1)
