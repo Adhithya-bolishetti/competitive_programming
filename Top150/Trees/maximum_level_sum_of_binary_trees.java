@@ -1,0 +1,51 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public int maxLevelSum(TreeNode root) {
+        if(root == null) return 0;
+
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+
+        int maxSum = Integer.MIN_VALUE;
+        int maxLevel = 1;
+        int currLevel = 1;
+
+        while(!q.isEmpty()) {
+            int levelSize = q.size();
+            int levelSum = 0;
+
+            for(int i=0;i<levelSize;i++) {
+                TreeNode node = q.poll();
+                levelSum += node.val;
+
+                if(node.right != null) q.offer(node.right);
+                if(node.left != null) q.offer(node.left);
+            }
+
+            if(levelSum > maxSum) {
+                maxSum = levelSum;
+                maxLevel = currLevel;
+            }
+
+            currLevel++;
+        }
+
+        return maxLevel;
+    }
+}
+// Time complexity: O(N) where N is the number of nodes in the tree
+// Space complexity: O(W) where W is the maximum width of the tree
